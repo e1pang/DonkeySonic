@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 """
+//////////////////////////////////////////////////////////////////
+##@@## changes in lines 41, 42, 57, 78, 119, 169
+//////////////////////////////////////////////////////////////////
+
 Scripts to drive a donkey 2 car and train a model for it. 
 
 Usage:
@@ -52,7 +56,7 @@ def drive(cfg, model_path=None, use_joystick=False):
 
     
     V.add(ctr, 
-          inputs=['cam/image_array', 'sonic_array'],
+          inputs=['cam/image_array', 'sonic_array'], ##@@##
           outputs=['user/angle', 'user/throttle', 'user/mode', 'recording'],
           threaded=True)
 
@@ -166,7 +170,7 @@ def train(cfg, tub_names, model_name):
     use the specified data in tub_names to train an artifical neural network
     saves the output trained model as model_name
     '''
-    X_keys = ['cam/image_array', 'sonic_array']
+    X_keys = ['cam/image_array', 'sonic_array'] ##@@##add sonic data into machine learning
     y_keys = ['user/angle', 'user/throttle']
     
     def rt(record):
