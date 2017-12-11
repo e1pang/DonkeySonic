@@ -13,7 +13,7 @@ Team Members: Parker Brown, Layton Hu, Dylan Steiner, Eric Pang
 #### Some explaining to do:
 Instead of writing 2 seperate modes for the sonic and the sonic&camera by themselves, it was easier (and clunkier) to just write seperate files and change the file names ('keras_sonic.py' to 'keras.py') to the one I wanted to use. In both situations, both the camera and ultrasonic sensors are collecting information and saving to JSON file, what is different is what goes into the model that is trained. 
 
-In the folders 'Sonic' and 'Sonic-Camera' are the files for 'manage.py' and 'keras.py' for their respective versions. All you have to do to get to where we left off is to [add the ultrasonic sensor class into donkey/donkeycar/parts](https://github.com/ptbrown35/MAE198), change your 'manage.py' and 'keras.py' (in both the pi and the computer on which you train), and make the change in 'datastore.py'as mentioned below.
+In the folders 'Sonic' and 'Sonic-Camera' are the files for 'manage.py' and 'keras.py' for their respective versions. All you have to do to get to where we left off is to [add the ultrasonic sensor class into donkey/donkeycar/parts](https://github.com/ptbrown35/MAE198), change your 'manage.py' and 'keras.py' (in both the pi and the computer on which you train), and make the change in 'datastore.py'as mentioned below. Bugs to watch out for: spacing. Everything else is copied and pasted over and it worked with us so...
 
 If comments will help you, reading sonic-camera first might be more helpful. To differentiate my comments from those that pre-existed, mine will begin with '##@@##'
 
