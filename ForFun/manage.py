@@ -3,7 +3,13 @@
 Scripts to drive a donkey 2 car and train a model for it. 
 
 Usage:
-    manage.py (drive) [--model=<model>] [--js]
+    manage.py (drive) [--model=<model>] [--js] [--mode=<mode>]
+    
+    where the possible modes are    
+    c=camera    
+    s=sonic    
+    cs=cam and sonic
+    
     manage.py (train) [--tub=<tub1,tub2,..tubn>] (--model=<model>)
     manage.py (calibrate)
     manage.py (check) [--tub=<tub1,tub2,..tubn>] [--fix]
