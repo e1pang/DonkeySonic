@@ -20,6 +20,7 @@ If comments will help you, reading sonic-camera first might be more helpful. To 
 ##### Two embarassing things
 1) There is a lot of needless copying of data values that was not fixed for the sake of time.
 2) Having to rename files
+
 Under the 'ForFun' folder are the files where these are addressed. If there is a group continuing this project, a high priority should be rewriting this. There is a readme in that folder.
 
 
