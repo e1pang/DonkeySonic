@@ -10,7 +10,7 @@ Usage:
     s=sonic    
     cs=cam and sonic
     
-    manage.py (train) [--tub=<tub1,tub2,..tubn>] (--model=<model>)
+    manage.py (train) [--tub=<tub1,tub2,..tubn>] (--model=<model>) [--mode=<mode>]
     manage.py (calibrate)
     manage.py (check) [--tub=<tub1,tub2,..tubn>] [--fix]
     manage.py (analyze) [--tub=<tub1,tub2,..tubn>] (--op=<histogram>) (--rec=<"user/angle">)
