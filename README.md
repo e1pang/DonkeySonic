@@ -1,9 +1,9 @@
 MAE 198: FALL 2017 
-Professors: Jack Silberman, Maurício de Oliveira
-Team Members: Parker Brown, Layton Hu, Dylan Steiner, Eric Pang (me ^_^)
 
-For reference in case the master donkeycar has changed too much, I forked the version of donkeycar that we used into here: 
-https://github.com/e1pang/donkey
+Professors: Jack Silberman, Maurício de Oliveira
+
+Team Members: Parker Brown, Layton Hu, Dylan Steiner, Eric Pang (yours truly ^_^)
+
 
 ### Relevant Links:
 * [Get Ultrasonic Sensor here](https://github.com/ptbrown35/MAE198)
@@ -18,6 +18,21 @@ Instead of writing a seperate mode for the sonic sensors by themselves and then 
 To differentiate my comments from those that pre-existed, mine will begin with '##@@##'
 
 
-# First: Modify tub.py to accept 'listfloat'
+# How to modify 'datastore.py' to accept the data type you want to add
+'datastore.py' is found in donkey/donkeycar/parts/datastore.py
 
-tub.py can be found in donkey/donkeycar/management/tub.py
+If you add a new part and you want to save the output to the tub, you need to make sure that type is supported. 
+
+The part you need to modify is in line 310 of the put_record(self, data) method in the forked version:
+```python
+if typ in ['str', 'float', 'int', 'boolean']:
+                json_data[key] = val
+```
+For example, say you want to add 'listfloat' which is what we needed to do for our ultrasonic sensors (it returned a list of 3 numbers, like [1,2,3]). You would 
+                
+```python
+if typ in ['str', 'float', 'int', 'boolean','listfloat']:
+                json_data[key] = val
+```
+
+                
