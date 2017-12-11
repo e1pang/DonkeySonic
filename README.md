@@ -57,12 +57,12 @@ On line 34 of camera.py, the original:
         self.rawCapture.truncate(0)
         return frame
 ```
-Say you want to segment a 120x160 image 1/3 from the top. Then, you want throw out the rightmost 50 pixels on the top piece and keep everything on the bottom piece. It might looks something like:
+Say you want to segment a 120x160 image 1/3 from the top. Then, you want throw out the rightmost 50 pixels on the top piece, keep everything on the bottom piece, and return the entire image (so 3 images). It might looks something like:
 ```python
    def run(self):
         f = next(self.stream)
         frame = f.array
         self.rawCapture.truncate(0)
-        return [frame[0:40,0:110], frame[40:120] #disclaimer: just an example, unlike me, you want to brush up on array manipulation
+        return [frame[0:40,0:110], frame[40:120], frame] #disclaimer: just an example, unlike me, you want to brush up on array manipulation
 ```       
                
