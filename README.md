@@ -34,6 +34,35 @@ if typ in ['str', 'float', 'int', 'boolean','listfloat']:
                 json_data[key] = val
 ```
 ### Extra: Playing with 'camera.py'
+Go to donkey/donkeycar/parts/camera.py
 
+There are two ways to manipulate your camera. You can change: 1) what the camera sees or 2) what the camera returns.
+
+##### 1) Change what the camera sees- for example look down, up, side, in the middle, etc.
+Do you want to change what your camera sees but you don't want to print/attach a new mount? Then this if for you!
+
+[It's as simple as this, the 'zoom' function](http://picamera.readthedocs.io/en/release-1.13/api_camera.html#picamera.PiCamera.zoom)
+
+Insert the line in the camera's initialize function.
+
+##### 2) Change what the camera returns or do things to the image- for example, image segmentation or filtering
+The code saves the image in an array called 'frame.' If you want to do anything to the image, you can do it on the array before it is returned.
+
+On line 34 of camera.py, the original:
+```python
+   def run(self):
+        f = next(self.stream)
+        frame = f.array
+        self.rawCapture.truncate(0)
+        return frame
+```
+Say you want to segment a 120x160 image 1/3 from the top. Then, you want throw out the rightmost 50 pixels on the top piece and keep everything on the bottom piece. It might looks something like:
+```python
+   def run(self):
+        f = next(self.stream)
+        frame = f.array
+        self.rawCapture.truncate(0)
+        return [frame[0:40,0:110], frame[40:120] #disclaimer: just an example, it is not debugged
+```
                 
                
