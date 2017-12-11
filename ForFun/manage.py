@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Scripts to drive a donkey 2 car and train a model for it. 
+Scripts to drive a donkey car and train a model for it. 
 
 Usage:
     manage.py (drive) [--model=<model>] [--js] [--mode=<mode>]
