@@ -42,7 +42,7 @@ if typ in ['str', 'float', 'int', 'boolean','listfloat']:
 #### Extra: Playing with 'camera.py'
 Under donkey/donkeycar/parts/camera.py
 ##### 1) Change what the camera sees- for example look down, up, side, in the middle, etc.
-Do you want to change what your camera sees but you don't want to print/attach a new mount? Then this if for you!
+Do you want to change what your camera sees but you don't want to move/print a new mount? 
 
 [It's as simple as this, the 'zoom' function.](http://picamera.readthedocs.io/en/release-1.13/api_camera.html#picamera.PiCamera.zoom)
 Insert this in the camera's initialize function.
