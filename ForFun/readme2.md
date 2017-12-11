@@ -11,5 +11,5 @@ s- sonic only
 cs- camera and sonic
 
 
-Both the camera AND the sonic sensors are training data during user drive mode.
+Both the camera AND the sonic sensors are taking data and saving it during user drive mode.
 The difference is that driving with a model and training that model are different.
