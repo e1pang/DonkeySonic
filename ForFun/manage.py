@@ -42,8 +42,8 @@ def drive(cfg, model_path=None, use_joystick=False, mode= 'c')
     cam = dk.parts.PiCamera(resolution=cfg.CAMERA_RESOLUTION)
     V.add(cam, outputs=['cam/image_array'], threaded=True)
     
-    usensor=dk.parts.ultrasonic()##@@## add part for the ultrasonic sensor, compare to the example for adding camera above
-    V.add(usensor,outputs=['sonic_array'])##@@##
+    usensor=dk.parts.ultrasonic()
+    V.add(usensor,outputs=['sonic_array'])
 
     if use_joystick or cfg.USE_JOYSTICK_AS_DEFAULT:
         #modify max_throttle closer to 1.0 to have more power
@@ -93,7 +93,6 @@ def drive(cfg, model_path=None, use_joystick=False, mode= 'c')
     V.add(kl, k1_inputs,  
           outputs=['pilot/angle', 'pilot/throttle'],
           run_condition='run_pilot')
-    ##@@## add sonic_array as an input
 
 
     #Choosewhat inputs should change the car.
@@ -130,7 +129,7 @@ def drive(cfg, model_path=None, use_joystick=False, mode= 'c')
     V.add(steering, inputs=['angle'])
     V.add(throttle, inputs=['throttle'])
     
-    ##@@## modify tub to save data from ultrasonic sensors
+
     inputs=['cam/image_array', 'sonic_array',
             'user/angle', 'user/throttle', 
             'user/mode']
