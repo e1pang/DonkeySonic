@@ -6,11 +6,11 @@ Usage:
     manage.py (drive) [--model=<model>] [--js] [--mode=<mode>]
     
     where the possible modes are    
-    c=camera    
+    c=camera    (default mode)
     s=sonic    
     cs=cam and sonic
     
-    manage.py (train) [--tub=<tub1,tub2,..tubn>] (--model=<model>) [--mode=<mode>]
+    manage.py (train) [--tub=<tub1,tub2,..tubn>] (--model=<model>)
     manage.py (calibrate)
     manage.py (check) [--tub=<tub1,tub2,..tubn>] [--fix]
     manage.py (analyze) [--tub=<tub1,tub2,..tubn>] (--op=<histogram>) (--rec=<"user/angle">)
@@ -26,7 +26,7 @@ from docopt import docopt
 import donkeycar as dk 
 
 
-def drive(cfg, model_path=None, use_joystick=False):
+def drive(cfg, model_path=None, use_joystick=False, mode= 'c')
     '''
     Construct a working robotic vehicle from many parts.
     Each part runs as a job in the Vehicle loop, calling either
@@ -167,19 +167,30 @@ def gather_tubs(cfg, tub_names):
     return tubs
 
 
-def train(cfg, tub_names, model_name):
+def train(cfg, tub_names, model_name, mode='c'):
     '''
     use the specified data in tub_names to train an artifical neural network
     saves the output trained model as model_name
     '''
-    X_keys = ['cam/image_array', 'sonic_array']
+    if (mode=='c'):
+        X_keys = ['cam/image_array']
+    elif mode=='s':
+        X_keys = ['sonic_array']
+    else:
+        X_keys = ['cam/image_array', 'sonic_array']
+    
     y_keys = ['user/angle', 'user/throttle']
     
     def rt(record):
         record['user/angle'] = dk.utils.linear_bin(record['user/angle'])
         return record
-
-    kl = dk.parts.KerasCategorical()
+    
+    if (mode=='c'):
+        kl = dk.parts.KerasC()
+    elif (mode=='s'):
+        kl = dk.parts.KerasS()
+    else:
+        k1= dk.parts.KerasCS()
     
     tubs = gather_tubs(cfg, tub_names)
 
@@ -253,7 +264,7 @@ if __name__ == '__main__':
     cfg = dk.load_config()
     
     if args['drive']:
-        drive(cfg, model_path = args['--model'], use_joystick=args['--js'])
+        drive(cfg, model_path = args['--model'], use_joystick=args['--js'], mode = args['--mode'])
     
     elif args['calibrate']:
         calibrate()
@@ -261,7 +272,8 @@ if __name__ == '__main__':
     elif args['train']:
         tub = args['--tub']
         model = args['--model']
-        train(cfg, tub, model)
+        mode=args['--mode']
+        train(cfg, tub, model, mode)
 
     elif args['check']:
         tub = args['--tub']
