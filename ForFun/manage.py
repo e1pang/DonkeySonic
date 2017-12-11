@@ -56,9 +56,18 @@ def drive(cfg, model_path=None, use_joystick=False, mode= 'c')
         #of managing steering, throttle, and modes, and more.
         ctr = dk.parts.LocalWebController()
 
-    
+    if (mode=='c'):        
+        ctr_inputs=['cam/image_array']
+        kl = dk.parts.KerasC()               
+    elif (mode=='s'):
+        ctr_inputs=['sonic_array']
+        kl = dk.parts.KerasS()   
+    else:
+        ctr_inputs=['cam/image_array', 'sonic_array'],
+        kl = dk.parts.KerasCS()
+      
     V.add(ctr, 
-          inputs=['cam/image_array', 'sonic_array'],
+          ctr_inputs,
           outputs=['user/angle', 'user/throttle', 'user/mode', 'recording'],
           threaded=True)
 
@@ -75,11 +84,13 @@ def drive(cfg, model_path=None, use_joystick=False, mode= 'c')
     V.add(pilot_condition_part, inputs=['user/mode'], outputs=['run_pilot'])
     
     #Run the pilot if the mode is not user.
-    kl = dk.parts.KerasCategorical()
+    ##@@##kl = dk.parts.KerasCategorical() created part above
     if model_path:
         kl.load(model_path)
     
-    V.add(kl, inputs=['cam/image_array', 'sonic_array'],  
+    k1_inputs=ctr_inputs
+    
+    V.add(kl, k1_inputs,  
           outputs=['pilot/angle', 'pilot/throttle'],
           run_condition='run_pilot')
     ##@@## add sonic_array as an input
