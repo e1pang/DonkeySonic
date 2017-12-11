@@ -11,7 +11,9 @@ Team Members: Parker Brown, Layton Hu, Dylan Steiner, Eric Pang
 * [Class Website](https://guitar.ucsd.edu/mae198/index.php/Introduction_to_Autonomous_Vehicles)
 
 #### Some explaining to do:
-Instead of writing a seperate mode for the sonic sensors by themselves and then the sonic+camera together, it was easier (and clunkier) to just write seperate files and change the file names ('keras_sonic.py' to 'keras.py') when it is the one I want to use. In the folders 'Sonic' and 'Sonic+Camera' are the files for 'manage.py' and 'keras.py' for the respective versions. All you have to do to get to where we left off is to [get the ultrasonic sensor class](https://github.com/ptbrown35/MAE198), change your 'manage.py' and 'keras.py' (in both the pi and the computer on which you train), and make the following change in 'datastore.py'
+Instead of writing 2 seperate modes for the sonic and the sonic+camera by themselves, it was easier (and clunkier) to just write seperate files and change the file names ('keras_sonic.py' to 'keras.py') when it is the one I want to use. In the folders 'Sonic' and 'Sonic+Camera' are the files for 'manage.py' and 'keras.py' for their respective versions. All you have to do to get to where we left off is to [add the ultrasonic sensor class into donkey/donkeycar/parts/[whatever you wish to name it].py](https://github.com/ptbrown35/MAE198), change your 'manage.py' and 'keras.py' (in both the pi and the computer on which you train), and make the following change in 'datastore.py'
+
+Make sure you import the right file with regards to name changes.
 
 To differentiate my comments from those that pre-existed, mine will begin with '##@@##'
 
@@ -56,6 +58,6 @@ Say you want to segment a 120x160 image 1/3 from the top. Then, you want throw o
         f = next(self.stream)
         frame = f.array
         self.rawCapture.truncate(0)
-        return [frame[0:40,0:110], frame[40:120] #disclaimer: just an example, lot debugged
+        return [frame[0:40,0:110], frame[40:120] #disclaimer: just an example, unlike me, you want to brush up on array manipulation
 ```       
                
