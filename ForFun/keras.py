@@ -2,7 +2,7 @@
 
 
 
-##@@## I tried my best to mark my changes with this comment sign
+##@@## I tried my best to mark the smaller changes that are hard to notice with this comment sign
 
 pilots.py
 
