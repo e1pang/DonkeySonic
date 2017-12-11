@@ -174,24 +174,20 @@ def train(cfg, tub_names, model_name, mode='c'):
     '''
     if (mode=='c'):
         X_keys = ['cam/image_array']
+        kl = dk.parts.KerasC()
     elif mode=='s':
         X_keys = ['sonic_array']
+        kl = dk.parts.KerasS()
     else:
         X_keys = ['cam/image_array', 'sonic_array']
+        k1= dk.parts.KerasCS()
     
     y_keys = ['user/angle', 'user/throttle']
     
     def rt(record):
         record['user/angle'] = dk.utils.linear_bin(record['user/angle'])
         return record
-    
-    if (mode=='c'):
-        kl = dk.parts.KerasC()
-    elif (mode=='s'):
-        kl = dk.parts.KerasS()
-    else:
-        k1= dk.parts.KerasCS()
-    
+        
     tubs = gather_tubs(cfg, tub_names)
 
     import itertools
