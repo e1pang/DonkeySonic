@@ -7,7 +7,7 @@ Team Members: Parker Brown, Layton Hu, Dylan Steiner, Eric Pang
 #### Relevant Links:
 * [Get Ultrasonic Sensor here](https://github.com/ptbrown35/MAE198)
 * [Forked Donkey (version that we used)](https://github.com/e1pang/donkey)
-* [Master Donkey Github](https://github.com/wroscoe/donkey)
+* [Master Donkey](https://github.com/wroscoe/donkey)
 * [Class Website](https://guitar.ucsd.edu/mae198/index.php/Introduction_to_Autonomous_Vehicles)
 
 #### Some explaining to do:
