@@ -15,7 +15,7 @@ Instead of writing 2 seperate modes for the sonic and the sonic+camera by themse
 
 Make sure you import the right file with regards to name changes.
 
-To differentiate my comments from those that pre-existed, mine will begin with '##@@##'
+If comments will help you, read sonic-camera first. To differentiate my comments from those that pre-existed, mine will begin with '##@@##'
 
 #### How to modify 'datastore.py' to accept the data type you want to add
 'datastore.py' is found in donkey/donkeycar/parts/datastore.py
