@@ -34,10 +34,7 @@ if typ in ['str', 'float', 'int', 'boolean','listfloat']:
                 json_data[key] = val
 ```
 ### Extra: Playing with 'camera.py'
-Go to donkey/donkeycar/parts/camera.py
-
-There are two ways to manipulate your camera. You can change: 1) what the camera sees or 2) what the camera returns.
-
+Under donkey/donkeycar/parts/camera.py
 ##### 1) Change what the camera sees- for example look down, up, side, in the middle, etc.
 Do you want to change what your camera sees but you don't want to print/attach a new mount? Then this if for you!
 
